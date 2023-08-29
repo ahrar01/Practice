@@ -17,16 +17,9 @@ public:
     void reverse(vector<int>& nums,int start,int end){
         int i=start,j=end;
         while(i<j){
-            swapElement(nums,i,j);
+            swap(nums[i],nums[j]);
             i++;
             j--;
         }
-    }
-    
-    void swapElement(vector<int>& nums,int i,int j){
-        int temp;
-        temp = nums[i];
-        nums[i]=nums[j];
-        nums[j]=temp;
     }
 };
