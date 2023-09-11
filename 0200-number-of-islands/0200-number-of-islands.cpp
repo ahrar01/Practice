@@ -1,5 +1,6 @@
 class Solution {
 public:
+    vector<vector<int>> directions ={{1,0},{0,1},{0,-1},{-1,0}};
     void bfs(int row,int col,vector<vector<int>> &vis,vector<vector<char>>& grid){
         vis[row][col] =1;
         queue<pair<int,int>> q;
@@ -9,13 +10,10 @@ public:
         while(!q.empty()){
             int row = q.front().first;
             int col = q.front().second;
-            q.pop();
-            // delta row and delta column
-            int delrow[] = {-1, 0, +1, 0}; 
-            int delcol[] = {0, -1, 0, +1};
-            for (int i = 0; i < 4; i++) {
-                int nrow = row + delrow[i];
-                int ncol = col + delcol[i];
+            q.pop();            
+            for (auto &dir :directions) {
+                int nrow = row + dir[0];
+                int ncol = col + dir[1];
                     if(nrow>=0 && nrow<n && ncol>=0 && ncol <m && grid[nrow][ncol]=='1' && !vis[nrow][ncol]){
                         vis[nrow][ncol]=1;
                         q.push({nrow,ncol});
